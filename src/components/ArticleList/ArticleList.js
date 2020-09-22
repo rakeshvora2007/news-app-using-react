@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from "axios";
 import { API } from "../../config/Keys";
 import styles from "./ArticleList.module.css";
 import { Link } from "react-router-dom";
+import ArticleDataContext from "../../context/articleData/articleDataContext";
 
-export const ArticleList = (props) => {
-    console.log(props);
+export const ArticleList = () => {
     const [articlesList, setArticlesList] = useState([]);
+    const { setData } = useContext(ArticleDataContext);
 
     useEffect(() => {
         axios
             .get(`https://newsapi.org/v2/top-headlines?country=in&apiKey=${API.API_KEY}`)
             .then(response => {
                 setArticlesList(response.data.articles);
-                console.log(response.data.articles);
+                setData(response.data.articles);
             })
-        return () => {
-            // cleanup
-        }
     }, [])
 
 

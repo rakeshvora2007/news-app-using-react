@@ -2,9 +2,11 @@ import React from "react";
 import { ArticleList } from "./components/ArticleList/ArticleList";
 import { SingleArticle } from "./components/SingleArticle/SingleArticle";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ArticleDataState from "./context/articleData/articleDataState"
 
 function App() {
   return (
+    <ArticleDataState>
     <Router>
       <div className="App">
         <Switch>
@@ -13,6 +15,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </ArticleDataState>
   );
 }
 

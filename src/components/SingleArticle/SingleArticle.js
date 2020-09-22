@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import styles from "./SingleArticle.module.css";
+import ArticleDataContext from "../../context/articleData/articleDataContext";
 
 export const SingleArticle = (props) => {
-    console.log(props.match.params.id);
-    const { article } = props.location;
+    const {data, getData} = useContext(ArticleDataContext);
+    useEffect(() => {
+        getData();
+    }, [])
+    const article  = data[props.match.params.id];
+    
     return (
         <div className={styles.newspaper_article_wrapper}>
             {article &&
