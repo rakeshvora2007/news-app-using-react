@@ -7,7 +7,7 @@ import ArticleDataState from "./context/articleData/articleDataState"
 function App() {
   return (
     <ArticleDataState>
-    <Router>
+    <Router basename={`${process.env.PUBLIC_URL}/`}>
       <div className="App">
         <Switch>
           <Route path="/" exact component={ArticleList}></Route>
